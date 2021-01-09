@@ -1,4 +1,5 @@
-# vuetodo
+# vuenote
+basic vue app
 
 ## Project setup
 ```
