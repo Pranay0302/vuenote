@@ -5,13 +5,13 @@
      <!-- <h2>{{userip}}</h2> -->
      <div class="oof">
      <button class="nbutton">new note</button>
-     <button class="ndelete" @click="done">delete all</button>
+     <button class="ndelete" @click="done">delete</button>
      </div>
  </form>
  <ul>
- <li v-for="item in notes" :key="item.id" v-bind="enabled">
+ <div v-for="item in notes" :key="item.id" v-bind="enabled">
      <h3>{{item.content}}</h3>
- </li>
+ </div>
  </ul>
 </template>
 
@@ -26,7 +26,6 @@ export default {
         // object wrapper
         const userip = ref('');
         const notes = ref([]);
-
         function newnote(){
             // console.log(userip.value)
             notes.value.push({
@@ -37,7 +36,7 @@ export default {
         }
 
         function done(){
-            // yet to add
+                notes.value.splice(0,notes.value.length);
         }
 
         return {
