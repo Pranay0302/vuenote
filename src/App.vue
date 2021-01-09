@@ -5,7 +5,8 @@
      <!-- <h2>{{userip}}</h2> -->
      <div class="oof">
      <button class="nbutton">new note</button>
-     <button class="ndelete" @click="done">delete</button>
+     <button class="nd" @click="lol"> delete latest</button>
+     <button class="ndelete" @click="done">delete ALL</button>
      </div>
  </form>
  <ul>
@@ -38,12 +39,17 @@ export default {
         function done(){
                 notes.value.splice(0,notes.value.length);
         }
+        
+        function lol(){
+            notes.value.pop(notes.value[0]);
+        }
 
         return {
             userip,
             notes,
             newnote,
-            done
+            done,
+            lol
         }
     }
 }
@@ -58,12 +64,15 @@ export default {
     padding: 5px;
     color: #2c3e50;
 }
-.nbutton, .ndelete{
+.nbutton, .ndelete, .nd{
     margin: 4px;
 }
 .nokay{
     margin: 5px;
     height: 25px;
+}
+html{
+    background-color: #34495E;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -72,5 +81,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: #41B883;
+  padding: 40px;
 }
 </style>
