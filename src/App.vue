@@ -27,7 +27,7 @@ export default {
         // object wrapper
         const userip = ref('');
         let notes = ref([]);
-        notes.value = JSON.parse(localStorage.getItem("data"));
+        notes.value = JSON.parse(localStorage.getItem("data")) ?? [];
         function newnote(){
             // console.log(userip.value)
             notes.value.push({
@@ -44,7 +44,7 @@ export default {
         }
         
         function lol(){
-            notes.value.shift(notes.value[0]);
+            notes.value.shift();
         }
 
 
