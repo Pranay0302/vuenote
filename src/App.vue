@@ -5,12 +5,12 @@
      <!-- <h2>{{userip}}</h2> -->
      <div class="oof">
      <button class="nbutton">new note</button>
-     <button class="nd" @click="lol"> delete latest</button>
+     <button class="nd" @click="lol"> delete</button>
      <button class="ndelete" @click="done">delete ALL</button>
      </div>
  </form>
  <ul>
- <div v-for="item in notes" :key="item.id" v-bind="enabled">
+ <div v-for="item in notes" :key="item.id">
      <h3>{{item.content}}</h3>
  </div>
  </ul>
@@ -26,7 +26,8 @@ export default {
 
         // object wrapper
         const userip = ref('');
-        const notes = ref([]);
+        let notes = ref([]);
+        notes.value = JSON.parse(localStorage.getItem("data"));
         function newnote(){
             // console.log(userip.value)
             notes.value.push({
@@ -34,15 +35,18 @@ export default {
                 content: userip.value
             })
             userip.value = '';
+            localStorage.setItem("data", JSON.stringify(notes.value));
         }
 
         function done(){
                 notes.value.splice(0,notes.value.length);
+                localStorage.clear();
         }
         
         function lol(){
-            notes.value.pop(notes.value[0]);
+            notes.value.shift(notes.value[0]);
         }
+
 
         return {
             userip,
